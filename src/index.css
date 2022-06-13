@@ -1,13 +1,111 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', sans-serif;
+  background: #ffc425;
+  background: linear-gradient(to bottom, #ffc425 50%, #eaaa00 100%);
+  background-attachment: fixed;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.app {
+  max-width: 900px;
+  margin: auto;
+}
+
+/*
+  Header
+*/
+h1 {
+  text-align: center;
+  font-family: 'Bevan', cursive;
+  transform: rotate(-5deg) skew(-20deg);
+  color: #0d181c;
+  margin: 20px 0;
+  font-size: 100px;
+  font-weight: normal;
+  text-shadow: 3px 3px 0 rgba(13, 24, 28, 0.2);
+}
+
+/*
+  Search
+*/
+.search {
+  text-align: center;
+  max-width: 500px;
+  margin: 20px auto;
+  display: flex;
+}
+
+.search input {
+  flex-grow: 10;
+  background: #fff;
+  border: 0;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.search button {
+  background: #e13e45;
+  color: #fff;
+  text-transform: uppercase;
+  border: 0;
+  font-size: 20px;
+  padding: 20px;
+}
+
+.search button:disabled {
+  opacity: 0.5;
+}
+
+/*
+  Beer listing
+*/
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/*
+  Beer card
+*/
+.beer {
+  background-color: #fff;
+  padding: 10px;
+  border-top: 15px solid #e13e45;
+  width: 26%;
+  margin: 20px;
+  box-shadow: 0 0 10px rgba(13, 24, 28, 0.2);
+  transition: 0.2s;
+}
+
+.beer:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px 2px rgba(13, 24, 28, 0.3);
+}
+
+.beer h2 {
+  margin: 0;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.beer img {
+  height: 250px;
+  display: block;
+  margin: auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 50px;
+  }
+
+  .beer {
+    width: 100%;
+  }
 }

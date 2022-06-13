@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1 className="header">Beer App!</h1>
+      <div className="search">
+        <input type="text" placeholder="Hoppy, Malt, Angry, New..." />
+        <button disabled>Recherche</button>
+      </div>
+      <div className="results">
+        <div className="beer">
+          <h2>Bière 1</h2>
+          <img src="logo192.png" alt="Bière 1" />
+        </div>
+        <div className="beer">
+          <h2>Bière 2</h2>
+          <img src="logo192.png" alt="Bière 2" />
+        </div>
+        <div className="beer">
+          <h2>Bière 3</h2>
+          <img src="logo192.png" alt="Bière 3" />
+        </div>
+        <div className="beer">
+          <h2>Bière 4</h2>
+          <img src="logo192.png" alt="Bière 4" />
+        </div>
+      </div>
     </div>
   );
 }
