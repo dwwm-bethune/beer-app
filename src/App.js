@@ -9,6 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       beers: [],
+      loading: true,
     };
   }
 
@@ -17,7 +18,7 @@ class App extends React.Component {
   }
 
   loadBeers() {
-    axios.get('https://api.punkapi.com/v2/beers').then(response => this.setState({ beers: response.data }));
+    axios.get('https://api.punkapi.com/v2/beers').then(response => this.setState({ beers: response.data, loading: false }));
   }
 
   render() {
@@ -25,7 +26,7 @@ class App extends React.Component {
       <div className="app">
         <Header name="Beer App!" />
         <Search />
-        <Results beers={this.state.beers} />
+        <Results beers={this.state.beers} loading={this.state.loading} />
       </div>
     );
   }

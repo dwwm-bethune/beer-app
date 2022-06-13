@@ -1,4 +1,10 @@
+import Loader from './Loader';
+
 function Results(props) {
+    if (props.loading) {
+        return <Loader message="🍻 Les bières arrivent!" />;
+    }
+
     return (
         <div className="results">
             {props.beers.map((beer) =>
