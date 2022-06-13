@@ -1,3 +1,4 @@
+import Beer from './Beer';
 import Loader from './Loader';
 
 function Results(props) {
@@ -7,12 +8,7 @@ function Results(props) {
 
     return (
         <div className="results">
-            {props.beers.map((beer) =>
-                <div className="beer" key={beer.id}>
-                    <h2>{beer.name}</h2>
-                    <img src={beer.image_url} alt={beer.name} />
-                </div>
-            )}
+            {props.beers.map((beer) => <Beer beer={beer} key={beer.id} />)}
         </div>
     );
 }
