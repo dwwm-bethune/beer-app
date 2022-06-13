@@ -1,31 +1,30 @@
-function App() {
-  return (
-    <div className="app">
-      <h1 className="header">Beer App!</h1>
-      <div className="search">
-        <input type="text" placeholder="Hoppy, Malt, Angry, New..." />
-        <button disabled>Recherche</button>
+import Header from './components/Header';
+import Results from './components/Results';
+import Search from './components/Search';
+import React from 'react';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      beers: [
+        { name: 'Bière 1', image: 'logo192.png' },
+        { name: 'Bière 2', image: 'logo192.png' },
+        { name: 'Bière 3', image: 'logo192.png' },
+        { name: 'Bière 4', image: 'logo192.png' },
+      ]
+    };
+  }
+
+  render() {
+    return (
+      <div className="app">
+        <Header name="Beer App!" />
+        <Search />
+        <Results beers={this.state.beers} />
       </div>
-      <div className="results">
-        <div className="beer">
-          <h2>Bière 1</h2>
-          <img src="logo192.png" alt="Bière 1" />
-        </div>
-        <div className="beer">
-          <h2>Bière 2</h2>
-          <img src="logo192.png" alt="Bière 2" />
-        </div>
-        <div className="beer">
-          <h2>Bière 3</h2>
-          <img src="logo192.png" alt="Bière 3" />
-        </div>
-        <div className="beer">
-          <h2>Bière 4</h2>
-          <img src="logo192.png" alt="Bière 4" />
-        </div>
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
