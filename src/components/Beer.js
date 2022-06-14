@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
+import slugify from 'slugify';
 
 function Beer(props) {
   return (
     <div className="beer">
-      {/* @todo: slugify */}
-      <Link to={`/beer/${props.beer.id}/${props.beer.name}`}>
+      <Link to={`/beer/${props.beer.id}/${slugify(props.beer.name, { lower: true })}`}>
         <h2>{props.beer.name}</h2>
         <img src={props.beer.image_url} alt={props.beer.name} />
       </Link>
