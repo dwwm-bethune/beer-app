@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import Loader from './Loader';
 import axios from 'axios';
 import { withRouter } from '../index';
 
@@ -8,6 +9,7 @@ class Single extends React.Component {
     super(props);
     this.state = {
       beer: {},
+      loading: true
     };
   }
 
@@ -16,7 +18,7 @@ class Single extends React.Component {
   }
 
   loadBeer(id) {
-    axios.get(`https://api.punkapi.com/v2/beers/${id}`).then(response => this.setState({ beer: response.data[0] }));
+    axios.get(`https://api.punkapi.com/v2/beers/${id}`).then(response => this.setState({ beer: response.data[0], loading: false }));
   }
 
   renderAbv(beer) {
@@ -61,6 +63,10 @@ class Single extends React.Component {
   };
 
   render() {
+    if (this.state.loading) {
+      return <Loader message="Ça charge !" />;
+    }
+
     return (
       <div className="app">
         <Header name="Beer App!" />
