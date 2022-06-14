@@ -3,6 +3,7 @@ import Results from './components/Results';
 import Search from './components/Search';
 import React from 'react';
 import axios from 'axios';
+import { withRouter } from './index';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,11 +15,22 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.loadBeers();
+    // On utilise la même fonction pour la recherche ou la liste des bières
+    this.loadBeers(this.props.router.params.search);
   }
 
-  loadBeers() {
-    axios.get('https://api.punkapi.com/v2/beers').then(response => this.setState({ beers: response.data, loading: false }));
+  loadBeers(search) {
+    this.setState({ loading: true });
+
+    let url = 'https://api.punkapi.com/v2/beers';
+
+    if (search) {
+      url += '?beer_name=' + search;
+    }
+
+    axios.get(url).then(response => {
+      this.setState({ beers: response.data, loading: false });
+    });
   }
 
   render() {
@@ -32,4 +44,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);

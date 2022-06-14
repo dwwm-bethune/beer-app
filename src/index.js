@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import Single from './components/Single';
@@ -27,7 +27,8 @@ reportWebVitals();
 export function withRouter(Component) {
   return (props) => {
     let params = useParams();
+    let navigate = useNavigate();
 
-    return <Component {...props} router={{ params }} />
+    return <Component {...props} router={{ params, navigate }} />
   };
 }
