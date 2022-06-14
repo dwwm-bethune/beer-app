@@ -32,6 +32,14 @@ class App extends React.Component {
   loadBeers(search) {
     this.setState({ loading: true });
 
+    // On va chercher les beers dans le localStorage
+    let beers = localStorage.getItem('beers-' + search);
+
+    if (beers) {
+      this.setState({ beers: JSON.parse(beers), loading: false });
+      return;
+    }
+
     let url = 'https://api.punkapi.com/v2/beers';
 
     if (search) {
@@ -40,6 +48,9 @@ class App extends React.Component {
 
     axios.get(url).then(response => {
       this.setState({ beers: response.data, loading: false });
+
+      // On sauvegarde les bières dans le localStorage pour aller les chercher plus tard
+      localStorage.setItem('beers-' + search, JSON.stringify(response.data));
     });
   }
 
