@@ -19,6 +19,16 @@ class App extends React.Component {
     this.loadBeers(this.props.router.params.search);
   }
 
+  componentDidUpdate(prevProps) {
+    let currentSearch = this.props.router.params.search;
+    let oldSearch = prevProps.router.params.search;
+
+    // Si on fait une recherche ou qu'on fait une recherche différente de celle précédente
+    if (currentSearch != oldSearch) {
+      this.loadBeers(currentSearch);
+    }
+  }
+
   loadBeers(search) {
     this.setState({ loading: true });
 
