@@ -21,6 +21,8 @@ class Single extends React.Component {
     axios.get(`https://api.punkapi.com/v2/beers/${id}`).then(response => this.setState({ beer: response.data[0], loading: false }));
   }
 
+  // J'ai séparé l'affichage de chaque élément dans des fonctions render...
+  // Cela simplifie l'affichage en JSX avec les ifs...
   renderAbv(beer) {
     if (!beer.abv) return;
 
@@ -29,6 +31,7 @@ class Single extends React.Component {
 
   renderStyle(beer) {
     if (!beer.food_pairing) return;
+
     return (
       <div className="style">
         <h3>Food Pairing</h3>
@@ -39,9 +42,12 @@ class Single extends React.Component {
     );
   };
 
+  // Pour l'IBU, on affiche 1 cercle jaune de 0 à 20, 2 cercles de 20 à 40...
   renderIbu(beer) {
     if (!beer.ibu) return;
+
     let stars = Math.ceil(beer.ibu * 5 / 100);
+
     return (
       <div className="ibu">
         <h3>Ibu {beer.ibu}</h3>
@@ -50,10 +56,13 @@ class Single extends React.Component {
     );
   };
 
+  // On affiche le verre 1 pour un ebc à 1, le verre 12 pour un ebc à 24 avec le modulo....
   renderGlass(beer) {
     if (!beer.ebc) return;
-    let randomGlass = Math.floor(Math.random() * 12) + 1;
-    randomGlass = Math.max(beer.ebc % 12, 1);
+
+    // let randomGlass = Math.floor(Math.random() * 12) + 1;
+    let randomGlass = Math.max(beer.ebc % 12, 1);
+
     return (
       <div className="glass">
         <img src={`/img/glass-${randomGlass}.jpg`} alt={beer.name} />
@@ -85,6 +94,7 @@ class Single extends React.Component {
           {this.renderAbv(this.state.beer)}
 
           <div className="deets">
+            {/* On peut faire du CSS en objet dans le JSX 🫣 */}
             <div style={{flexGrow: 1}}>
               {this.renderStyle(this.state.beer)}
               {this.renderIbu(this.state.beer)}

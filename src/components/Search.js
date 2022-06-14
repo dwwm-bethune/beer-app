@@ -9,6 +9,7 @@ class Search extends React.Component {
     };
   }
 
+  // Dès qu'on fait une recherche, on envoie l'utilisateur vers la page en question
   handleSearch = () => {
     this.props.router.navigate(`/recherche/${this.state.search}`);
   }
