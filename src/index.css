@@ -18,7 +18,7 @@ p, li {
 /*
   Header
 */
-h1 {
+.header h1 {
   text-align: center;
   font-family: 'Bevan', cursive;
   transform: rotate(-5deg) skew(-20deg);
@@ -207,7 +207,7 @@ img {
 }
 
 @media (max-width: 768px) {
-  h1 {
+  .header h1 {
     font-size: 50px;
   }
 
