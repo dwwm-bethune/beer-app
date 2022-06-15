@@ -50,14 +50,14 @@ img {
 
 .search input {
   flex-grow: 10;
-  background: #fff;
+  background-color: #fff;
   border: 0;
   padding: 20px;
   font-size: 20px;
 }
 
 .search button {
-  background: #e13e45;
+  background-color: #e13e45;
   color: #fff;
   text-transform: uppercase;
   border: 0;
