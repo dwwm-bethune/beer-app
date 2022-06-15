@@ -73,7 +73,12 @@ class Single extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <Loader message="Ça charge !" />;
+      return (
+        <div className="app">
+          <Header name="Beer App!" />
+          <Loader message="Ça charge !" />
+        </div>
+      );
     }
 
     let image = this.state.beer.image_url ? this.state.beer.image_url : '/img/glass-6.jpg';
