@@ -76,13 +76,15 @@ class Single extends React.Component {
       return <Loader message="Ça charge !" />;
     }
 
+    let image = this.state.beer.image_url ? this.state.beer.image_url : '/img/glass-6.jpg';
+
     return (
       <div className="app">
         <Header name="Beer App!" />
         <div className="single">
           <div className="flex">
             <div className="label">
-              <img src={this.state.beer.image_url} alt={this.state.beer.name} />
+              <img src={image} alt={this.state.beer.name} />
             </div>
 
             <div className="desc">
